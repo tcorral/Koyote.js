@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="js/App.js"></script>
+    <script type="text/javascript" src="js/Bus.js"></script>
+    <script type="text/javascript" src="js/Component.js"></script>
+    <script type="text/javascript" src="js/List.js"></script>
+    <script type="text/javascript" src="js/List2.js"></script>
+    <script type="text/javascript" src="js/Item.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/javascript">
+        var oList = App.List.getInstance();
+        oList
+            .setBus(App.Bus)
+            .setContainer(document.getElementById('container'))
+            .setMainLayer('ul');
+
+        var oItem = App.Item.getInstance('Google', 'http://www.google.es')
+                .setMainLayer('li');
+        var oItem2 = App.Item.getInstance('Yahoo', 'http://www.yahoo.es')
+                .setMainLayer('li');
+
+        var oList2 = App.List2.getInstance()
+                .setContainer(oItem2.mainLayer)
+                .setMainLayer('ul');
+
+        var oItem3 = App.Item.getInstance('Softonic', 'http://www.softonic.com')
+                .setMainLayer('li');
+
+        oList
+            .add(oItem)
+            .add(oItem2)
+            .add(oList2.add(oItem3))
+            .init();
+    </script>
+</body>
+</html>
