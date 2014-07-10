@@ -1,18 +1,30 @@
 App.TodoItem = App.Widget.mix(
 {
-	constructor: function( text )
+	constructor: function( data )
 	{
-		App.callConstructor( 'Widget', this, [ null, 'todo-item' ] );
-		this.text = text;
+		App.callMethod( 'Widget.constructor', this, [ null, 'todo-item', data.id ] );
+		this.initText = data.text;
+		this.initChecked = data.checked;
 	},
-	'@template': '<li class="todo-item"><input type="checkbox" id="{{ checkid }}" class="todo-check" value="{{ text }}" /><span class="todo-label" contenteditable="true" title="Edit" data-id="{{ checkid }}">{{ text }}</span></li>',
+	'@template': '<li class="todo-item {{ doneclass }}" id="{{ id }}"><input type="checkbox" class="todo-check" {{ checkedattr }} /><span class="todo-label" contenteditable="true" title="Click to edit">{{ text }}</span></li>',
 	'@render': function()
 	{
-		App.callProtoMethod( 'Widget', 'render', this, [
+		var checkedAttr = '',
+			doneClass = '';
+
+		if ( !!this.initChecked )
+		{
+			checkedAttr = 'checked="checked"';
+			doneClass = 'todo-done';
+		}
+
+		App.callMethod( 'Widget.render', this, [
 		{
 			type: this.type,
-			checkid: 'check-' + this.id,
-			text: this.text
+			id: this.id,
+			text: this.initText,
+			checkedattr: checkedAttr,
+			doneclass: doneClass
 		} ] );
 	}
 } );
