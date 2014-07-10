@@ -11,9 +11,23 @@
 			padding: 10px;
 		}
 		.todo-form ul {
+			list-style-type: none;
+			margin: 0 0 0 16px;
+			padding: 0;
+		}
+		.todo-form li {
+			margin: 0 0 4px 0;
 		}
 		.todo-label {
-			padding: 2px
+			border: 1px solid transparent;
+			padding: 2px 4px;
+		}
+		.todo-label:hover {
+			border-color: #CCC;
+			cursor: pointer;
+		}
+		.todo-label:focus {
+			border-color: #666;
 		}
 		.todo-done .todo-label {
 			text-decoration: line-through;
@@ -31,19 +45,17 @@
 	<script type="text/javascript" src="lib/Widget.js"></script>
 	<script type="text/javascript" src="js/TodoList.js"></script>
 	<script type="text/javascript" src="js/TodoItem.js"></script>
+	<script type="text/javascript" src="js/TodoStorage.js"></script>
 	<script type="text/javascript">
 	( function( win, doc, app )
 	{
 		'use strict';
 
-		var todoList = app.create( 'TodoList', doc.getElementById( 'todo-form' ) );
+		var todoList = app.create( 'TodoList', doc.getElementById( 'todo-form' ) ),
+			storage = app.create( 'TodoStorage' );
 
-		var todos = ['Go running', 'Drink', 'Sleep'].map( function ( todo )
-		{
-			return app.create( 'TodoItem', todo );
-		} );
+		todoList.add( storage ).init();
 
-		todoList.add( todos ).init();
 	}( window, document, App ) );
 	</script>
 </body>

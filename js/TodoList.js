@@ -1,46 +1,66 @@
-App.TodoList = App.Widget.mix(
+( function( win, doc, app )
 {
-	constructor: function( container )
-	{
-		App.callConstructor( 'Widget', this, [ container, 'todo-list' ] );
-	},
-	'@template': '<ul id="{{ id }}" />',
-	'@render': function()
-	{
-		App.callProtoMethod( 'Widget', 'render', this, [
-		{
-			type: this.type,
-			id: this.id
-		} ] );
-	},
-	'@domEvents':
-	{
-		'.todo-check:change': function( event )
-		{
-			this.parentNode.classList.toggle( 'todo-done' );
+	'use strict';
 
-			App.Bus.publish( 'todos', 'todo:toggle',
+	App.TodoList = App.Widget.mix(
+	{
+		constructor: function( container )
+		{
+			var self = this;
+
+			App.callMethod( 'Widget.constructor', this, [ container, 'todo-list' ] );
+
+			App.Bus.subscribeTo( 'todos', 'todos:restore', function( todos )
 			{
-				id: this.id,
-				checked: !!this.checked
+				for ( var id in todos )
+				{
+					if ( todos.hasOwnProperty( id ) )
+					{
+						var todo = todos[ id ];
+						self.add( App.create( 'TodoItem', todo ) );
+					}
+				}
 			} );
 		},
-		'.todo-label:keypress': function( event )
+		'@template': '<ul id="{{ id }}" />',
+		'@render': function()
 		{
-			if ( [ 13, 27 ].indexOf( event.keyCode ) > -1 )
+			App.callMethod( 'Widget.render', this, [
 			{
-				event.preventDefault();
-				this.blur();
-				return;
+				type: this.type,
+				id: this.id
+			} ] );
+		},
+		publishUpdates: function( todoItem )
+		{
+			App.Bus.publish( 'todos', 'todo:toggleState',
+			{
+				id: todoItem.id,
+				checked: !!todoItem.querySelector( '.todo-check' ).checked,
+				text: todoItem.querySelector( '.todo-label' ).innerHTML
+			} );
+		},
+		'@domEvents':
+		{
+			'.todo-check:change': function( event )
+			{
+				var todoItem = this.parentNode;
+				todoItem.classList.toggle( 'todo-done' );
+				App.TodoList.publishUpdates( todoItem );
+			},
+			'.todo-label:input': function( event )
+			{
+				App.TodoList.publishUpdates( this.parentNode );
+			},
+			'.todo-label:keypress': function( event )
+			{
+				if ( [ 13, 27 ].indexOf( event.keyCode ) > -1 )
+				{
+					event.preventDefault();
+					this.blur();
+					return;
+				}
 			}
-		},
-		'.todo-label:input': function( event )
-		{
-			App.Bus.publish( 'todos', 'todo:update',
-			{
-				id: this.getAttribute( 'data-id' ),
-				text: this.innerHTML
-			} );
 		}
-	}
-} );
+	} );
+}( window, document, App ) );
