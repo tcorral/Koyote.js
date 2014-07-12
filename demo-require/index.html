@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Todo list</title>
+	<style>
+		body {
+			font-family: Verdana;
+			font-size: 12px;
+			color: #333;
+			padding: 10px;
+		}
+		.todo-add {
+			padding: 6px;
+			margin: 0 0 8px 18px;
+			border: 1px solid #666;
+			width: 240px;
+		}
+		.todo-form ul {
+			list-style-type: none;
+			margin: 0 0 0 16px;
+			padding: 0;
+		}
+		.todo-form li {
+			margin: 0 0 4px 0;
+		}
+		.todo-label {
+			border: 1px solid transparent;
+			padding: 2px 4px;
+		}
+		.todo-label:hover {
+			border-color: #CCC;
+			cursor: pointer;
+		}
+		.todo-label:focus {
+			border-color: #666;
+		}
+		.todo-done .todo-label {
+			text-decoration: line-through;
+		}
+	</style>
+</head>
+<body>
+	<h1>Todos</h1>
+	<form id="todo-form" class="todo-form">
+	</form>
+
+    <script type="text/javascript" data-main="js/app.js" src="js/require.js"></script>
+</body>
+</html>
