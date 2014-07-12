@@ -6,17 +6,20 @@
 		'go-running':
 		{
 			id: 'go-running',
-			text: 'Go running (default)'
+			text: 'Go running (default)',
+			checked: false
 		},
 		'drink':
 		{
 			id: 'drink',
-			text: 'Drink (default)'
+			text: 'Drink (default)',
+			checked: false
 		},
 		'sleep':
 		{
 			id: 'sleep',
-			text: 'Sleep (default)'
+			text: 'Sleep (default)',
+			checked: false
 		}
 	};
 
@@ -30,19 +33,19 @@
 			this.restore();
 
 			app.Bus.subscribe( this );
-			app.Bus.publish( 'todos', 'todos:restore', this.todos );
+			app.Bus.publish( 'todos', 'list:restore', this.todos );
 		},
 		'@events':
 		{
 			'todos':
 			{
-				'todo:toggleState': function( todoData )
+				'todo:update': function( data )
 				{
-					this.save( todoData );
+					data.todos.forEach( this.save.bind( this ) );
 				},
-				'todo:updateText': function( todoData )
+				'todo:add': function( data )
 				{
-					this.save( todoData );
+					data.todos.forEach( this.save.bind( this ) );
 				}
 			}
 		},

@@ -10,6 +10,12 @@
 			color: #333;
 			padding: 10px;
 		}
+		.todo-add {
+			padding: 6px;
+			margin: 0 0 8px 18px;
+			border: 1px solid #666;
+			width: 240px;
+		}
 		.todo-form ul {
 			list-style-type: none;
 			margin: 0 0 0 16px;
@@ -39,22 +45,26 @@
 	<form id="todo-form" class="todo-form">
 	</form>
 
-	<script type="text/javascript" src="lib/App.js"></script>
-	<script type="text/javascript" src="lib/Bus.js"></script>
-	<script type="text/javascript" src="lib/Component.js"></script>
-	<script type="text/javascript" src="lib/Widget.js"></script>
+	<script type="text/javascript" src="../lib/App.js"></script>
+	<script type="text/javascript" src="../lib/Bus.js"></script>
+	<script type="text/javascript" src="../lib/Component.js"></script>
+	<script type="text/javascript" src="../lib/Widget.js"></script>
 	<script type="text/javascript" src="js/TodoList.js"></script>
 	<script type="text/javascript" src="js/TodoItem.js"></script>
 	<script type="text/javascript" src="js/TodoStorage.js"></script>
+	<script type="text/javascript" src="js/TodoAdd.js"></script>
 	<script type="text/javascript">
 	( function( win, doc, app )
 	{
 		'use strict';
 
-		var todoList = app.create( 'TodoList', doc.getElementById( 'todo-form' ) ),
+		var form = doc.getElementById( 'todo-form' ),
+			todoList = app.create( 'TodoList', form ),
+			addInput = app.create( 'TodoAdd', form ),
 			storage = app.create( 'TodoStorage' );
 
-		todoList.add( storage ).init();
+		addInput.render();
+		todoList.add( storage ).render();
 
 	}( window, document, App ) );
 	</script>
