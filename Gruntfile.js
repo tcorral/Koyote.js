@@ -49,6 +49,11 @@ module.exports = function (grunt) {
         dest: 'versions/todo/'
       }
     },
+    karma: {
+      unit: {
+        configFile: 'config/karma.conf.js'
+      }
+    },
     uglify: {
       options: {
         sourceMappingURL: "koyote.min.map",
@@ -108,9 +113,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks("grunt-karma");
 
-  grunt.registerTask('koyote', ['jshint', 'uglify:koyote', 'compress:koyote']);
-  grunt.registerTask('widget', ['jshint', 'uglify:widget', 'compress:widget']);
-  grunt.registerTask('todo', ['jshint', 'uglify:todo', 'compress:todo']);
-  grunt.registerTask('default', ['koyote', 'widget', 'todo']);
+  grunt.registerTask('test', ['jshint', 'karma']);
+  grunt.registerTask('koyote', ['test', 'uglify:koyote', 'compress:koyote']);
+  grunt.registerTask('widget', ['test', 'uglify:widget', 'compress:widget']);
+  grunt.registerTask('todo', ['test', 'uglify:todo', 'compress:todo']);
+  grunt.registerTask('default', ['koyote']);
 };
