@@ -1,0 +1,28 @@
+{
+  "name": "Koyote.js",
+  "version": "0.0.1",
+  "description": "Minimal mixin framework for the creative developer.",
+  "main": "lib/Koyote.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tcorral/Koyote.js.git"
+  },
+  "keywords": [
+    "mixin"
+  ],
+  "author": "Tomas Corral",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tcorral/Koyote.js/issues"
+  },
+  "homepage": "https://github.com/tcorral/Koyote.js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-compress": "^0.9.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.0"
+  }
+}

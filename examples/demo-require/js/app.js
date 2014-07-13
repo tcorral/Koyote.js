@@ -1,13 +1,13 @@
 requirejs.config({
   paths: {
-    "koyote": '../../lib/Koyote',
-    "koyote-bus": '../../lib/Bus',
-    "koyote-component": '../../lib/Component',
-    "koyote-widget": '../../lib/Widget',
+    "koyote": '../../../src/Koyote',
+    "koyote-bus": '../../../src/Bus',
+    "koyote-component": '../../../src/Component',
+    "koyote-widget": '../../../src/Widget',
     "koyote-todo-add": '../../demo/js/TodoAdd',
     "koyote-todo-item": '../../demo/js/TodoItem',
     "koyote-todo-list": '../../demo/js/TodoList',
-    "koyote-todo-storage": '../../demo/js/TodoStorage',
+    "koyote-todo-storage": '../../demo/js/TodoStorage'
   }
 });
 requirejs(['koyote', 'koyote-todo-item', 'koyote-todo-list', 'koyote-todo-storage', 'koyote-todo-add'],

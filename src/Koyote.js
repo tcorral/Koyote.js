@@ -1,4 +1,4 @@
-( function (root, und) {
+( function (root) {
   'use strict';
   var Koyote, isNodeEnvironment, object = 'object';
 
