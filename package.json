@@ -4,16 +4,25 @@
   "description": "Minimal mixin framework for the creative developer.",
   "main": "lib/Koyote.js",
   "scripts": {
-    "test": "grunt"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/tcorral/Koyote.js.git"
   },
   "keywords": [
-    "mixin"
+    "mixin",
+    "framework",
+    "component",
+    "composite"
   ],
   "author": "Tomas Corral",
+  "contributors": [
+    {
+      "name": "Marc Mignonsin",
+      "github": "https://github.com/mawrkus"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tcorral/Koyote.js/issues"
