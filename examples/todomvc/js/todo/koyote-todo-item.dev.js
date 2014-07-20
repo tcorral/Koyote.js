@@ -59,38 +59,14 @@
                 element.classList.remove('hidden');
               }
 
-              var _data = {};
-              var count = 0;
-              var todo;
-              bus.publish('todos', 'todo:getAll', _data);
-              for(var key in _data.todos){
-                if(_data.todos.hasOwnProperty(key)){
-                  todo = _data.todos[key];
-                  if(todo.checked === false){
-                    count++;
-                  }
-                }
-              }
-              bus.publish('todos', 'todo:count', count);
+              bus.publish('todos', 'todo:count');
             },
             'todo:hide': function (item) {
               var element = document.getElementById(item.id);
               if(element){
                 element.classList.add('hidden');
               }
-              var _data = {};
-              var count = 0;
-              var todo;
-              bus.publish('todos', 'todo:getAll', _data);
-              for(var key in _data.todos){
-                if(_data.todos.hasOwnProperty(key)){
-                  todo = _data.todos[key];
-                  if(todo.checked === false){
-                    count++;
-                  }
-                }
-              }
-              bus.publish('todos', 'todo:count', count);
+              bus.publish('todos', 'todo:count');
             },
             'todo:complete': function (item){
               var checkbox = this.element.querySelector('.toggle');
@@ -130,6 +106,7 @@
                 checked: todoItem.checked
               }
             });
+            bus.publish('todos', 'filter:refresh');
           },
           '.edit:keydown': function (event, todoItem) {
             var todoElement = this.parentNode;

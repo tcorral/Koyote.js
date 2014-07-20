@@ -134,6 +134,20 @@
       '@events': {
         'todos': {
           'todo:count': function (count) {
+            if(typeof count === 'undefined'){
+              var _data = {};
+              count = 0;
+              var todo;
+              bus.publish('todos', 'todo:getAll', _data);
+              for(var key in _data.todos){
+                if(_data.todos.hasOwnProperty(key)){
+                  todo = _data.todos[key];
+                  if(todo.checked === false){
+                    count++;
+                  }
+                }
+              }
+            }
             this.updateCount(count);
           },
           'todo:update': function () {
