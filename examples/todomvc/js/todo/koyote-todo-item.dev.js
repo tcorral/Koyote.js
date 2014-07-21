@@ -69,20 +69,22 @@
               bus.publish('todos', 'todo:count');
             },
             'todo:complete': function (item){
-              var checkbox = this.element.querySelector('.toggle');
-              bus.publish('todos', 'todo:update',
-                {
-                  todos: [
-                    {
-                      id: this.id,
-                      text: this.text,
-                      checked: false
-                    }
-                  ]
-                });
-              checkbox.removeAttribute('checked');
-              checkbox.checked = false;
-              this.element.classList.remove('completed');
+              if(this.element){
+                var checkbox = this.element.querySelector('.toggle');
+                bus.publish('todos', 'todo:update',
+                  {
+                    todos: [
+                      {
+                        id: this.id,
+                        text: this.text,
+                        checked: false
+                      }
+                    ]
+                  });
+                checkbox.removeAttribute('checked');
+                checkbox.checked = false;
+                this.element.classList.remove('completed');
+              }
             }
           }
         },
