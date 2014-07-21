@@ -150,6 +150,22 @@
             }
             this.updateCount(count);
           },
+          'todo:remove': function () {
+            var _data = {};
+            var count = 0;
+            var todo;
+            bus.publish('todos', 'todo:getAll', _data);
+            for(var key in _data.todos){
+              if(_data.todos.hasOwnProperty(key)){
+                todo = _data.todos[key];
+                if(todo.checked === false){
+                  count++;
+                }
+              }
+            }
+            this.updateCount(count);
+            this.filtering[this.filter].call(this);
+          },
           'todo:update': function () {
             this.setData();
             this.filtering[this.filter].call(this);

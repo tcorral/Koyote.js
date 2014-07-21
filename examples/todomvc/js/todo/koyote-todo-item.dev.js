@@ -106,7 +106,6 @@
                 checked: todoItem.checked
               }
             });
-            bus.publish('todos', 'filter:refresh');
           },
           '.edit:keydown': function (event, todoItem) {
             var todoElement = this.parentNode;
