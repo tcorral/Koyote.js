@@ -14,7 +14,7 @@
   }
 
   /**
-   * Check if Hydra.js is loaded in Node.js environment
+   * Check if Koyote.js is loaded in Node.js environment
    * @type {Boolean}
    * @private
    */
