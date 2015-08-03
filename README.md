@@ -1,5 +1,7 @@
 # Koyote.js
 
+[![Build Status](https://drone.io/github.com/fer/koyote.js/status.png)](https://drone.io/github.com/fer/koyote.js/latest)
+
 Powerful and minimal mixin framework that allows you to be creative.
 
 - Lightweight: just a script tag and just 550 bytes (gzipped) away in the browser or $ npm install koyotejs away in node.
