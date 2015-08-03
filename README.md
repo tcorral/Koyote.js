@@ -19,4 +19,5 @@ Following the steps below you will see how to create a todo list using a composi
 ## License
 
 [MIT LICENSE](http://opensource.org/licenses/MIT)
+
 Copyright (c) 2011 Tomás Corral Casas
