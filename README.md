@@ -1,6 +1,4 @@
-# Koyote.js
-
-[![Build Status](https://drone.io/github.com/fer/koyote.js/status.png)](https://drone.io/github.com/fer/koyote.js/latest)
+# Koyote.js [![Build Status](https://drone.io/github.com/fer/koyote.js/status.png)](https://drone.io/github.com/fer/koyote.js/latest)
 
 Powerful and minimal mixin framework that allows you to be creative.
 
