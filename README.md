@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img width="100"src="https://raw.githubusercontent.com/fer/Koyote.js/website/imgs/koyote.png"></a></p>
+<p align="center"><a href="#" target="_blank"><img width="70"src="https://raw.githubusercontent.com/fer/Koyote.js/website/imgs/koyote.png"></a></p>
 
 # Koyote.js [![Build Status](https://drone.io/github.com/fer/koyote.js/status.png)](https://drone.io/github.com/fer/koyote.js/latest)
 
