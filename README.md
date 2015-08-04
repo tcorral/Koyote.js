@@ -18,14 +18,11 @@ or
 bower install koyotejs
 ```
 
-
 ## Learn
 
 Following the steps below you will see how to create a todo list using a composite and widget pattern:
 
 ## Plugins
-
-
 
 ## Documentation
 
