@@ -26,6 +26,8 @@ Following the steps below you will see how to create a todo list using a composi
 
 ## Plugins
 
+## Issues
+
 ## Documentation
 
 ## License
