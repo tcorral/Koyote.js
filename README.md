@@ -24,6 +24,8 @@ bower install koyotejs
 
 Following the steps below you will see how to create a todo list using a composite and widget pattern:
 
+<!-- Poner los ejemplos de los TODOs -->
+
 ## Plugins
 
 ## Issues
